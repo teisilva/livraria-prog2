@@ -1,8 +1,11 @@
 import java.util.Scanner;
 public class Livro {
-    String titulo, codigo, editora, categoria;
-    int ano, qtdEstoque;
-    double valor;
+     String titulo;
+     String codigo;
+     String editora;
+     String categoria;
+     int ano, qtdEstoque;
+     double valor;
 
     public Livro(){
         Scanner tec = new Scanner(System.in);
@@ -25,7 +28,7 @@ public class Livro {
 
     }
 
-    public Livro(String codigo,String titulo,int ano, String categoria,String editora, double valor, int qtdEstoque){
+    public Livro(String codigo, String titulo, int ano, String categoria, String editora, double valor, int qtdEstoque){
 
         this.codigo = codigo;
         this.titulo = titulo;
@@ -34,7 +37,9 @@ public class Livro {
         this.editora = editora;
         this.valor = valor;
         this.qtdEstoque = qtdEstoque;
+    }
 
+    public void info(){
         System.out.println("=========================================================");
         System.out.println(">>>>>>" + this.codigo);
         System.out.println("Titulo/Editora: " + this.titulo + "/" + this.editora);
@@ -45,46 +50,5 @@ public class Livro {
         double total = this.valor * this.qtdEstoque;
         System.out.println("Valor total em estoque: R$" + total);
         System.out.println("=========================================================");
-    }
-
-    public void info(){
-        System.out.println("=========================================================");
-        System.out.println(">>>>>>" + this.codigo);
-        System.out.println("Titulo/Editora: " + this.titulo + this.editora);
-        System.out.println("Categoria: " + this.categoria);
-        System.out.println("Ano: " + this.ano);
-        System.out.println("Estoque: " + this.qtdEstoque + " unidades");
-        System.out.println("Valor: R$" + this.valor);
-        double total = this.valor * this.qtdEstoque;
-        System.out.println("Valor total em estoque: R$" + total);
-        System.out.println("=========================================================");
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public String getEditora() {
-        return editora;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public int getAno() {
-        return ano;
-    }
-
-    public int getQtdEstoque() {
-        return qtdEstoque;
-    }
-
-    public double getValor() {
-        return valor;
     }
 }
