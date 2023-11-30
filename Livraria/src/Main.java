@@ -26,6 +26,7 @@ public class Main {
                     "8 - Listar livros no estoque\n" +
                     "9 - Gravar os novos livros no estoque\n" +
                     "10 - Criar uma nova filial\n" +
+                    "11 - Buscar livros por código\n" +
                     "0 - Encerrar atividades\n" +
                     "===================================\n");
 
@@ -72,6 +73,9 @@ public class Main {
                     break;
                 case 10:
                     novaFilial();
+                    break;
+                case 11:
+                    buscaCodigo();
                     break;
                 default:
                     System.out.println("Digite uma opção válida!");
@@ -354,86 +358,36 @@ public class Main {
         fileWriter.close();
     }
 
+    public static void buscaCodigo(){
+
+        String title = "";
+        String editora = "";
+        String categoria = "";
+        int ano = 0;
+        tec.nextLine();
+        System.out.print("Informe o código do livro que deseja buscar: ");
+        String code = tec.nextLine();
+        boolean foundlivro = false;
+        for(Filial filial : filiais){
+            for(Livro livro : filial.livros){
+                if(code.equals(livro.codigo)){
+                    foundlivro = true;
+                    title = livro.titulo;
+                    editora = livro.editora;
+                    categoria = livro.categoria;
+                    ano = livro.ano;
+                }
+            }
+        }
+        if(foundlivro){
+            System.out.println(">>>>>Cod#"+ code);
+            System.out.println("Titulo/Editora: " + title+"/"+editora);
+            System.out.println("Categoria: "+ categoria);
+            System.out.println("Ano: "+ ano);
+        }
+        else{
+            System.out.println("Não existem livros com esse código");
+        }
+
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*String texto = livro.getCodigo() + "," + livro.getTitulo() + "," + livro.getAno() + "," +
-            livro.getCategoria() + "," + livro.getEditora() + "," + livro.getValor() + "," + livro.getQtdEstoque();
-                            writer.write(texto);
-                                    writer.newLine();*/
-
-
-
-
-
-/*try {
-                                FileWriter fileWriter = new FileWriter("src/" + nomes.get(i) + ".txt", true);
-                                BufferedWriter writer = new BufferedWriter(fileWriter);
-
-                                for (Filial filiial : filiais) {
-                                    String texto = Filial.getCodigo() + "," + Filial.getNome() + "," + Filial.getEndereco() + "," +
-                                            Filial.getContato() + "," + Filial.getEstoque();
-                                    writer.write(texto);
-                                    writer.newLine();
-                                }
-
-                                writer.close();
-                                fileWriter.close();
-
-                                System.out.println("Dados dos livros foram escritos no arquivo 'Estoque.txt'.");
-                            } catch (IOException o) {
-                                o.printStackTrace();
-                            }*/
